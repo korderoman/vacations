@@ -1,0 +1,85 @@
+<section class="container mt-5">
+  <form [formGroup]="employeeInfoPresenter.form">
+    <!-- Campo DNI -->
+    <div class="mb-3">
+      <label for="dni" class="form-label fw-bold">DNI</label>
+      <input formControlName="dni" type="text" class="form-control" id="dni" name="dni" placeholder="Ingresa tu DNI" >
+    </div>
+
+    <!-- Campo Nombres -->
+    <div class="mb-3">
+      <label for="nombres" class="form-label fw-bold">Nombres</label>
+      <input  formControlName="nombres" type="text" class="form-control" id="nombres" name="nombres" placeholder="Ingresa tus nombres" >
+    </div>
+
+    <!-- Campo Apellidos -->
+    <div class="mb-3">
+      <label for="apellidos" class="form-label fw-bold">Apellidos</label>
+      <input formControlName="apellidos" type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Ingresa tus apellidos" >
+    </div>
+
+    <!-- Campo Ingreso -->
+    <div class="mb-3">
+      <label for="ingreso" class="form-label fw-bold">Fecha de Ingreso</label>
+      <input formControlName="ingreso" type="date" class="form-control" id="ingreso" name="ingreso" >
+    </div>
+    <!-- Campo Perfil -->
+    <div class="mb-3">
+      <label for="perfil" class="form-label fw-bold">Perfil</label>
+      <select
+        formControlName="perfil"
+        class="form-select"
+        id="perfil"
+        name="perfil"
+        nameParameter="roles"
+        nttSelect
+        >
+      </select>
+    </div>
+    <!-- squad -->
+    <div class="mb-3">
+      <label for="squad" class="form-label fw-bold">Squad</label>
+      <select
+        formControlName="squad"
+        class="form-select"
+        id="squad"
+        name="squad"
+        nameParameter="squads"
+        nttSelect
+        >
+      </select>
+    </div>
+
+    <!-- Campo LT -->
+    <div class="mb-3">
+      <label for="lt" class="form-label fw-bold">Líder Técnico</label>
+      <select
+        formControlName="lt"
+        class="form-control"
+        id="lt"
+        name="lt"
+        nameParameter="technicalLeaders"
+        nttSelect
+      ></select>
+    </div>
+
+
+
+    <!-- Campo Scrum Master -->
+    <div class="mb-3">
+      <label for="scrumMaster" class="form-label fw-bold">Scrum Master</label>
+      <select
+        formControlName="scrum_master"
+        class="form-select"
+        id="scrumMaster"
+        name="scrumMaster"
+        nameParameter="scrumMasters"
+        nttSelect
+      >
+      </select>
+    </div>
+
+    <!-- Botón de Enviar -->
+    <button type="submit" class="btn btn-primary">Guardar</button>
+  </form>
+</section>

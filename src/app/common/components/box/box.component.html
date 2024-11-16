@@ -1,0 +1,14 @@
+<section [class]="boxCssClass">
+  <div class="ntt-data-box__header">
+    <div>
+      <h2 class="fw-bold text-white">{{ title | uppercase }}</h2>
+    </div>
+    <div (click)="onClickToggleBody()" *ngIf="isCollapsible" [ngStyle]="evaluateIconStyle()" class="ntt-data-box__header__button">
+      <i class="bi bi-caret-down-fill text-white fs-3"></i>
+    </div>
+  </div>
+  <ng-content select="detail-header"></ng-content>
+  <div *ngIf="showBody" class="ntt-data-box__body">
+    <ng-content></ng-content>
+  </div>
+</section>

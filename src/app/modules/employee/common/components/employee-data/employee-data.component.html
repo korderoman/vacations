@@ -1,0 +1,23 @@
+<section class="container">
+  <section class="my-3">
+    <ntt-common-box
+    title="Datos del empleado"
+    [isCollapsible]="true"
+    >
+      <ntt-data-employee-info
+      [employee]="employee"
+      ></ntt-data-employee-info>
+    </ntt-common-box>
+  </section>
+  <section class="my-3">
+    <ntt-common-box
+    title="Vacaciones del empleado"
+    [isCollapsible]="true"
+    >
+      <ntt-data-employee-vacations
+      [vacations]="vacations"
+      ></ntt-data-employee-vacations>
+    </ntt-common-box>
+
+  </section>
+</section>

@@ -1,0 +1,30 @@
+.ntt-data-box {
+  border: 1px solid rgba(240, 240, 240, 1);
+  border-radius: 5px;
+  box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.07);
+  height: 100%;
+
+  &__header {
+    background: var(--bs-body-color);
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+
+    &__button {
+      cursor: pointer;
+      margin-left: 32px;
+    }
+  }
+
+  &__body {
+    padding: 24px 30px;
+  }
+
+  &--close {
+    border: none;
+    border-radius: 8px;
+    box-shadow: none;
+  }
+}
