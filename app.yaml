@@ -1,0 +1,10 @@
+runtime: nodejs18
+instance_class: F1
+service: vacaciones-app
+handlers:
+  - url: /
+    static_files: dist/vacaciones_app/index.html
+    upload: dist/vacaciones_app/index.html
+  - url: /(.*)
+    static_files: dist/vacaciones_app/\1
+    upload: dist/vacaciones_app/.*
