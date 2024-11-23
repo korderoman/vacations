@@ -5,10 +5,11 @@ import { CommonModule } from '@angular/common';
 import { EmployeeInfoModule } from './common/components/employee-info/employee-info.module';
 import { EmployeeVacationsModule } from './common/components/employee-vacations/employee-vacations.module';
 import { BoxComponent } from '../../../../../common/components/box/box.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [EmployeeDataComponent, EmployeeDataContainer],
-  imports: [CommonModule, EmployeeInfoModule, EmployeeVacationsModule, BoxComponent],
+  imports: [CommonModule, EmployeeInfoModule, EmployeeVacationsModule, ReactiveFormsModule, BoxComponent],
   exports: [EmployeeDataContainer],
 })
 export class EmployeeDataModule {}

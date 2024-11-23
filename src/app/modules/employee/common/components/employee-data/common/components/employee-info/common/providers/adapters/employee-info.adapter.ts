@@ -9,11 +9,6 @@ export class EmployeeInfoAdapter {
   public constructor(private readonly localStatesManager: LocalStateManagerService) {}
 
   public solveModel(employee: IEmployee | null): IEmployeeInfo {
-    this.solveBundleParameters();
     return new EmployeeInfoModel(employee);
-  }
-
-  public solveBundleParameters() {
-    console.log(this.localStatesManager.solveGetState<any>('technicalLeaders'));
   }
 }

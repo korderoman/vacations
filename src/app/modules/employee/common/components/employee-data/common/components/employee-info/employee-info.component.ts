@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { EmployeeInfoPresenter } from './employee-info.presenter';
 import { IEmployeeInfo } from './common/interfaces';
-import { TStatesName } from '../../../../../../../../common/types';
 
 @Component({
   selector: 'ntt-data-employee-info-ui',

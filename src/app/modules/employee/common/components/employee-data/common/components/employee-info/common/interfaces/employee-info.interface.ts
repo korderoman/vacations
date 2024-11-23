@@ -1,4 +1,4 @@
-import { ExtractTypesFromFormControls } from '../../../../../../../../../../common/types';
+import { ExtractTypes } from '../../../../../../../../../../common/types';
 import { IEmployeeInfoForm } from './employee-info-form.interface';
 
-export interface IEmployeeInfo extends ExtractTypesFromFormControls<IEmployeeInfoForm> {}
+export interface IEmployeeInfo extends ExtractTypes<IEmployeeInfoForm> {}

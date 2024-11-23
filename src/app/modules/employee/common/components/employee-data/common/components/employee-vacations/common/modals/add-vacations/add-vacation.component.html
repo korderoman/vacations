@@ -1,0 +1,56 @@
+<div class="modal-backdrop" (click)="onClose()"></div>
+<div class="modal-container">
+  <h2>Formulario de Registro</h2>
+  <form [formGroup]="addVacationPresenter.form" (ngSubmit)="onSubmit()">
+    <!-- Campo Año -->
+    <div class="form-group">
+      <label for="year">Año</label>
+      <input
+        id="year"
+        type="text"
+        formControlName="anno"
+        placeholder="Ingrese el año"
+        class="form-control"
+      />
+    </div>
+
+    <!-- Campo Fecha de Inicio -->
+    <div class="form-group">
+      <label for="startDate">Fecha de Inicio</label>
+      <input
+        id="startDate"
+        type="date"
+        formControlName="fechaInicio"
+        class="form-control"
+      />
+    </div>
+
+    <!-- Campo Fecha de Fin -->
+    <div class="form-group">
+      <label for="endDate">Fecha de Fin</label>
+      <input
+        id="endDate"
+        type="date"
+        formControlName="fechaFin"
+        class="form-control"
+      />
+    </div>
+
+    <!-- Campo Motivo -->
+    <div class="form-group">
+      <label for="reason">Motivo</label>
+      <textarea
+        id="reason"
+        formControlName="motivo"
+        placeholder="Ingrese el motivo"
+        class="form-control"
+      ></textarea>
+    </div>
+
+    <!-- Botones -->
+    <div class="form-actions">
+      <button type="submit" [disabled]="addVacationPresenter.form.invalid" class="btn btn-primary">Guardar</button>
+      <button type="button" class="btn btn-secondary" (click)="onClose()">Cancelar</button>
+    </div>
+  </form>
+</div>

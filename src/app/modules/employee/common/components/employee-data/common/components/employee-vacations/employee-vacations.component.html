@@ -1,1 +1,7 @@
-<p>Hola employee vacations</p>
+<section class="container">
+  <ntt-custom-table
+  [columns]="headers"
+  [rows]="rows"
+  (addVacation)="onAddVacation()"
+  ></ntt-custom-table>
+</section>

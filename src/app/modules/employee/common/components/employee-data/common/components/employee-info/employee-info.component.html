@@ -1,4 +1,4 @@
-<section class="container mt-5">
+<section class="container mt-5" *ngIf="model">
   <form [formGroup]="employeeInfoPresenter.form">
     <!-- Campo DNI -->
     <div class="mb-3">
@@ -62,9 +62,6 @@
         nttSelect
       ></select>
     </div>
-
-
-
     <!-- Campo Scrum Master -->
     <div class="mb-3">
       <label for="scrumMaster" class="form-label fw-bold">Scrum Master</label>
@@ -78,8 +75,5 @@
       >
       </select>
     </div>
-
-    <!-- Botón de Enviar -->
-    <button type="submit" class="btn btn-primary">Guardar</button>
   </form>
 </section>
