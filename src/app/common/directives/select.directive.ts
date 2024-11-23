@@ -26,8 +26,14 @@ export class SelectDirective implements OnInit {
   private solveAddOptionsToSelect(): void {
     if (this.nameParameter) {
       this.options = this.localStatesManager.solveGetState<Array<IParameter>>(this.nameParameter) ?? [];
-      this.options.forEach((option: IParameter) => {
+      this.options.forEach((option: IParameter, index: number) => {
         const optionElement = this.renderer.createElement('option');
+        if (index === 0) {
+          const optionElement1 = this.renderer.createElement('option');
+          this.renderer.setProperty(optionElement1, 'textContent', 'Seleccionar');
+          this.renderer.setProperty(optionElement1, 'value', 0);
+          this.renderer.appendChild(this.el.nativeElement, optionElement1);
+        }
         this.renderer.setProperty(optionElement, 'value', option.value);
         this.renderer.setProperty(optionElement, 'textContent', option.id);
         this.renderer.appendChild(this.el.nativeElement, optionElement);

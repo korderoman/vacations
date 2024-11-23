@@ -9,12 +9,15 @@ import {
   DocumentSnapshot,
   collection,
   getDocs,
+  setDoc,
   QuerySnapshot,
   CollectionReference,
 } from '@angular/fire/firestore';
 import { ECollections } from '../../enums';
 import { IEmployeeSearchRequest } from '../../../modules/employee/common/components/employee-search/common/interfaces';
-import { forkJoin, lastValueFrom, Observable } from 'rxjs';
+import { concatMap, forkJoin, from, lastValueFrom, Observable } from 'rxjs';
+import { IEmployeeInfo } from '../../../modules/employee/common/components/employee-data/common/components/employee-info/common/interfaces';
+import { TNonNullableValues } from '../../types';
 
 @Injectable({
   providedIn: 'root',
@@ -54,6 +57,45 @@ export class FirebaseDocsService {
       roles: this.solveGetPerfil(),
     });
     return lastValueFrom<IParametersFirebase>(response);
+  }
+
+  public async solveSaveAllEmployeeData(employeeInfo: Partial<IEmployeeInfo>, vacations: IVacations): Promise<void> {
+    const response: Observable<boolean> = from(this.solveSaveVacations(vacations)).pipe(
+      concatMap((vacationsRef: DocumentReference): Observable<boolean> => from(this.solveSaveEmployee(vacationsRef, employeeInfo))),
+    );
+    await lastValueFrom(response);
+  }
+  private async solveSaveEmployee(vacationsRef: DocumentReference, employeeInfo: Partial<IEmployeeInfo>): Promise<boolean> {
+    try {
+      const employeeData = employeeInfo as TNonNullableValues<IEmployeeInfo>;
+      const dataToSend: IEmployeeFirebase = {
+        ...employeeData,
+        vacaciones: vacationsRef,
+      };
+      console.log('dataToSend', dataToSend);
+      //const employeeExists: boolean = await this.solveCheckIfEmployeeExistsByDni(employeeData.dni);
+      const employeeRef: DocumentReference = doc(this.firestore, `${ECollections.EMPLOYEES}/${employeeData.dni}`);
+      await setDoc(employeeRef, dataToSend);
+      return true;
+    } catch (e: unknown) {
+      console.error(e);
+      return false;
+    }
+  }
+
+  private async solveCheckIfEmployeeExistsByDni(dni?: string | null): Promise<boolean> {
+    if (dni) {
+      const documentRef: DocumentReference = doc(this.firestore, `${ECollections.EMPLOYEES}/${dni}`);
+      const documentSnapshot: DocumentSnapshot = await getDoc(documentRef);
+      return !!documentSnapshot.exists();
+    }
+    return false;
+  }
+
+  private async solveSaveVacations(vacations: IVacations): Promise<DocumentReference> {
+    const vacationsRef: DocumentReference = doc(this.firestore, `${ECollections.VACATIONS}/${vacations.dni}`);
+    await setDoc(vacationsRef, { ...vacations });
+    return vacationsRef;
   }
   private async solveGetVacationsFromReference(employeeReference: DocumentReference): Promise<IVacations | null> {
     try {
