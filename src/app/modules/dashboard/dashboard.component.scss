@@ -1,0 +1,22 @@
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  a {
+    &.text-secondary {
+      color: #adb5bd !important; // Color gris claro
+
+      &:hover {
+        color: #ffffff !important; // Cambia a blanco al pasar el cursor
+        background-color: #6c757d; // Fondo gris oscuro
+      }
+    }
+
+    &.active-menu {
+      background-color: #ffffff; // Fondo blanco
+      color: #000000 !important; // Texto negro
+    }
+  }
+}
+
