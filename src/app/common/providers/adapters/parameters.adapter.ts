@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LocalStateManagerService } from './local-state-manager.service';
+import { LocalStateManagerService } from '../services/local-state-manager.service';
 import { IParametersFirebase } from '../../interfaces';
 import { TStatesName } from '../../types';
 

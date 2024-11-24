@@ -6,11 +6,13 @@ import { EmployeeComponent } from './employee.component';
 import { EmployeeRoutingModule } from './employee-routing.module';
 import { EmployeeSearchModule } from './common/components/employee-search/employee-search.module';
 import { EmployeeDataModule } from './common/components/employee-data/employee-data.module';
+import { EmployeeService } from './common/providers/services/employee.service';
 
 const CHILDREN = [EmployeeSearchModule, EmployeeDataModule];
 @NgModule({
   declarations: [EmployeeContainer, EmployeeComponent],
   imports: [CommonModule, ReactiveFormsModule, EmployeeRoutingModule, ...CHILDREN],
+  providers: [EmployeeService],
   exports: [EmployeeContainer],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

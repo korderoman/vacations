@@ -13,7 +13,7 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () => import('./modules/dashboard/dashboard.module').then((m) => m.DashboardModule),
-    canActivate: [AUTH_GUARD],
+    canActivate: [LOAD_PARAMETER_GUARD, AUTH_GUARD],
   },
   {
     path: 'login',
