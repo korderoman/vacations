@@ -77,7 +77,9 @@
   </form>
 
 </section>
-<section id="table-employee" class="container-fluid">
-  <p>Dias no laborados</p>
+<section id="table-employee" class="container-fluid mt-5" *ngIf="dataTable">
+  <ntt-data-table-complex
+  [dataTable]="dataTable"
+  ></ntt-data-table-complex>
 </section>
 

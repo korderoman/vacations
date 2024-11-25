@@ -1,0 +1,26 @@
+<section class="container-fluid" *ngIf="dataTable; else no_table_data">
+  <table class="table">
+    <thead class="table-dark">
+        <tr>
+          <th *ngFor="let header of headers">
+            {{header.name}}
+          </th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of body">
+        <td *ngFor="let cell of row">
+          {{cell}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+<ng-template #no_table_data>
+  <section class="container-fluid">
+    <div class="d-flex flex-row justify-content-center">
+      <h2>No existen datos en la tabla</h2>
+    </div>
+
+  </section>
+</ng-template>
