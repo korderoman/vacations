@@ -9,6 +9,6 @@ import { IDashboardUser } from '../../../../employee/common/components/employee-
   providers: [NoLaboralDaysPresenter],
 })
 export class NoLaboralDaysComponent {
-  @Input() public dataTable!: ITableComplexData<IDashboardUser>;
+  @Input() public dataTable!: ITableComplexData<IDashboardUser> | null;
   public constructor(public readonly noLaboralDaysPresenter: NoLaboralDaysPresenter) {}
 }
