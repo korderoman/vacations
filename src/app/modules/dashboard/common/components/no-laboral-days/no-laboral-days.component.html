@@ -1,7 +1,7 @@
 <section id="search-employee" class="container">
   <form [formGroup]="noLaboralDaysPresenter.form" class="row g-3 align-items-center">
     <!-- Squad -->
-    <div class="col-md-4">
+    <!--<div class="col-md-4">
       <label for="squad" class="form-label">Squad</label>
       <select
         class="form-select"
@@ -11,10 +11,10 @@
         nttSelect
       >
       </select>
-    </div>
+    </div>-->
 
     <!-- LT -->
-    <div class="col-md-4">
+    <!--<div class="col-md-4">
       <label for="lt" class="form-label">LT</label>
       <select
         class="form-select"
@@ -23,7 +23,7 @@
         nameParameter="technicalLeaders"
         nttSelect>
       </select>
-    </div>
+    </div>-->
 
     <!-- Scrum Master -->
     <div class="col-md-4">
@@ -37,13 +37,6 @@
       >
       </select>
     </div>
-
-    <!-- Año -->
-    <div class="col-md-4">
-      <label for="year" class="form-label">Año</label>
-      <input type="text" class="form-control" id="year" formControlName="year" placeholder="Ingrese el año" />
-    </div>
-
     <!-- Fecha de Inicio -->
     <div class="col-md-4">
       <label for="startDate" class="form-label">Fecha de Inicio</label>
@@ -54,18 +47,6 @@
     <div class="col-md-4">
       <label for="endDate" class="form-label">Fecha de Fin</label>
       <input type="date" class="form-control" id="endDate" formControlName="endDate" />
-    </div>
-
-    <!-- Nombres -->
-    <div class="col-md-4">
-      <label for="names" class="form-label">Nombres</label>
-      <input type="text" class="form-control" id="names" formControlName="names" placeholder="Ingrese los nombres" />
-    </div>
-
-    <!-- Apellidos -->
-    <div class="col-md-4">
-      <label for="lastName" class="form-label">Apellidos</label>
-      <input type="text" class="form-control" id="lastName" formControlName="lastName" placeholder="Ingrese los apellidos" />
     </div>
 
     <!-- Botón de envío -->

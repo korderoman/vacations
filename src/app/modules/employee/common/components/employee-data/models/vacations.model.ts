@@ -3,12 +3,15 @@ import { IEmployeeData } from '../common/interfaces';
 import { IEmployeeInfo } from '../common/components/employee-info/common/interfaces';
 import { IAddVacation } from '../common/components/employee-vacations/common/interfaces';
 import { TNonNullableValues } from '../../../../../../common/types';
+import * as moment from 'moment';
+import { EMonthNames } from '../../../../../dashboard/common/components/no-laboral-days/common/enums';
 
 export class VacationsModel implements IVacations {
   public readonly dni: string;
   public readonly vacaciones: IVacationsData;
 
   public constructor(formData: Partial<IEmployeeData>) {
+    moment.locale('es');
     this.dni = this.solveDni(formData);
     this.vacaciones = this.solveVacaciones(formData);
   }
@@ -50,6 +53,8 @@ export class VacationsModel implements IVacations {
         fecha_fin: fechaFin,
         motivo: motivo,
         anno: anno,
+        mes_inicio: moment(fechaInicio).format('MMMM') as EMonthNames,
+        mes_fin: moment(fechaFin).format('MMMM') as EMonthNames,
       };
     });
   }

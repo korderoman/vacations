@@ -1,20 +1,23 @@
 <section class="container-fluid" *ngIf="dataTable; else no_table_data">
-  <table class="table">
-    <thead class="table-dark">
-        <tr>
-          <th *ngFor="let header of headers">
-            {{header.name}}
-          </th>
-        </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let row of body">
-        <td *ngFor="let cell of row">
-          {{cell}}
+  <div class="table-responsive">
+    <table class="table table-bordered" id="table-complex">
+      <thead class="table-dark">
+      <tr>
+        <th *ngFor="let header of dataTable.headers">
+          {{header.name}}
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let row of dataTable.body">
+        <td *ngFor="let header of dataTable.headers">
+          {{row[header.item]}}
         </td>
       </tr>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </div>
+
 </section>
 <ng-template #no_table_data>
   <section class="container-fluid">
