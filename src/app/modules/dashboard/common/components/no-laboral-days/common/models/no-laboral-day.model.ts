@@ -9,10 +9,10 @@ export class NoLaboralDayModel implements INoLaboralDaysForm {
   public endDate: RequiredControl<string | null>;
 
   public constructor() {
-    this.scrumMaster = new RequiredControl<string | null>(null, false);
+    this.scrumMaster = new RequiredControl<string | null>(null);
     /*this.lt = new RequiredControl<string | null>(null, false);
     this.squad = new RequiredControl<string | null>(null, false);*/
-    this.startDate = new RequiredControl<string | null>(null, false);
-    this.endDate = new RequiredControl<string | null>(null, false);
+    this.startDate = new RequiredControl<string | null>(null);
+    this.endDate = new RequiredControl<string | null>(null);
   }
 }

@@ -5,6 +5,7 @@ import { NoLaboralDaysTableService } from './common/providers/services/no-labora
 import { NoLaboralDaysOperationsService } from './common/providers/services/no-laboral-days-operations.service';
 import { IEmployee } from '../../../../../common/interfaces';
 import { IDashboardUser } from '../../interfaces';
+import { INoLaboralDays } from './common/interfaces';
 
 @Component({
   selector: 'ntt-data-no-laboral-days',
@@ -21,7 +22,27 @@ export class NoLaboralDaysContainer implements OnInit {
   }
 
   public async ngOnInit(): Promise<void> {
-    const employees: Array<IEmployee> = await this.operations.solveGetNoLaboralDaysData();
-    this.dataTable = this.noLaboralDaysAdapter.solveDefaultDataTable(employees);
+    await this.solveDefaultDataTable();
+  }
+  public async onSearchEmployees(formData: Partial<INoLaboralDays>): Promise<void> {
+    try {
+      await this.searchEmployeesWithFirestore(formData);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  private async searchEmployeesWithFirestore(formData: Partial<INoLaboralDays>): Promise<void> {
+    const response: Array<IEmployee> = await this.operations.solveFindEmployeesBySearchInputs(formData);
+    this.dataTable = this.noLaboralDaysAdapter.solveFindEmployeesByDatesWithFirebase(response, formData);
+  }
+
+  private async solveDefaultDataTable(): Promise<void> {
+    try {
+      const employees: Array<IEmployee> = await this.operations.solveGetNoLaboralDaysData();
+      this.dataTable = this.noLaboralDaysAdapter.solveDefaultDataTable(employees);
+    } catch (e) {
+      console.error(e);
+    }
   }
 }

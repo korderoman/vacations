@@ -8,10 +8,15 @@ import {
   DocumentData,
   getDoc,
   DocumentSnapshot,
+  where,
+  query,
+  collectionData,
+  Query,
 } from '@angular/fire/firestore';
 import { IEmployee, IEmployeeFirebase, IVacations } from '../../../../../../../../common/interfaces';
 import { ECollections } from '../../../../../../../../common/enums';
 import { concatMap, from, lastValueFrom, Observable } from 'rxjs';
+import { INoLaboralDays } from '../../interfaces';
 
 @Injectable()
 export class NoLaboralDaysOperationsService {
@@ -41,5 +46,20 @@ export class NoLaboralDaysOperationsService {
     );
 
     return lastValueFrom<Array<IEmployee>>(response);
+  }
+
+  public async solveFindEmployeesBySearchInputs(searchBy: Partial<INoLaboralDays>): Promise<Array<IEmployee>> {
+    const response: Observable<Array<IEmployee>> = from(this.solveFindEmployeesByScrumMaster(searchBy)).pipe(
+      concatMap((employees: Array<IEmployeeFirebase>): Observable<Array<IEmployee>> => from(this.solveGetVacationsByEmployeeId(employees))),
+    );
+    return lastValueFrom<Array<IEmployee>>(response);
+  }
+
+  private async solveFindEmployeesByScrumMaster(searchBy: Partial<INoLaboralDays>): Promise<Array<IEmployeeFirebase>> {
+    const employees: CollectionReference = collection(this.firestore, ECollections.EMPLOYEES);
+    const q: Query = query(employees, where('scrum_master', '==', searchBy.scrumMaster!));
+    const querySnapshot: QuerySnapshot = await getDocs(q);
+    const response: Array<IEmployeeFirebase> = querySnapshot.docs.map((doc) => doc.data() as IEmployeeFirebase);
+    return response;
   }
 }

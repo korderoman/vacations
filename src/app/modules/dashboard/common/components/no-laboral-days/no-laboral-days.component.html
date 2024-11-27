@@ -52,7 +52,7 @@
     <!-- Botón de envío -->
     <div class="col-md-12">
       <div class="d-flex flex-row justify-content-end">
-        <button type="submit" class="btn btn-primary w-25" [disabled]="noLaboralDaysPresenter.form.invalid">Buscar</button>
+        <button (click)="onSearchEmployees()" type="submit" class="btn btn-primary w-25" [disabled]="noLaboralDaysPresenter.form.invalid">Buscar</button>
       </div>
     </div>
   </form>
