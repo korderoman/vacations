@@ -10,7 +10,6 @@ import {
   DocumentSnapshot,
   where,
   query,
-  collectionData,
   Query,
 } from '@angular/fire/firestore';
 import { IEmployee, IEmployeeFirebase, IVacations } from '../../../../../../../../common/interfaces';

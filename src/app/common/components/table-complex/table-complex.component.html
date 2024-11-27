@@ -1,4 +1,7 @@
-<section class="container-fluid" *ngIf="dataTable; else no_table_data">
+<section class="container-fluid" *ngIf="dataTable.body; else no_table_data">
+  <div class="d-flex flex-row justify-content-end my-3">
+    <button class="btn btn-success" (click)="onExportToExcelFile()">Exportar a Excel</button>
+  </div>
   <div class="table-responsive">
     <table class="table table-bordered" id="table-complex">
       <thead class="table-dark">

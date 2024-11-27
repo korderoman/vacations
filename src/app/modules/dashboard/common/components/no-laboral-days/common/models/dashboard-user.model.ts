@@ -98,7 +98,7 @@ export class DashboardUserModel implements IDashboardUser {
     if (dates.length > 0) {
       let cellContent = '';
       dates.forEach((date: IVacationsDates, index: number) => {
-        const content = `Inicio: ${date.fecha_inicio} - Fin: ${date.fecha_fin} | motivo: ${date.motivo} `;
+        const content = `Inicio: ${date.fecha_inicio} - Fin: ${date.fecha_fin} | motivo: ${date.motivo}\n `;
         cellContent += content;
         if (index === dates.length - 1) {
           cellContent += `-----------`;
