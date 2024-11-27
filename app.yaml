@@ -2,11 +2,24 @@ runtime: nodejs18
 instance_class: F1
 service: vacaciones-app
 handlers:
-  - url: /
+  # Servir los archivos estáticos generados por Angular
+  - url: /assets
+    static_dir: dist/vacaciones_app/assets
+
+  - url: /favicon.ico
+    static_files: dist/vacaciones_app/favicon.ico
+    upload: dist/vacaciones_app/favicon.ico
+
+  - url: /styles.css
+    static_files: dist/vacaciones_app/styles.css
+    upload: dist/vacaciones_app/styles.css
+
+  - url: /index.html
     static_files: dist/vacaciones_app/index.html
     upload: dist/vacaciones_app/index.html
-  - url: /(.*)
+
+  # Servir otros archivos generados (JS, etc.)
+  - url: /.*
     static_files: dist/vacaciones_app/\1
     upload: dist/vacaciones_app/.*
-    mime_type: application/javascript
 
