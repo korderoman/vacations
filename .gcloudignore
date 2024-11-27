@@ -16,3 +16,5 @@
 # Node.js dependencies:
 node_modules/
 .angular/
+#Forzamos la inclusión de los keys para app engine
+!keys/**
