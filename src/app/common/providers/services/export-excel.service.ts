@@ -5,6 +5,8 @@ import { IDashboardUser } from '../../../modules/dashboard/common/interfaces';
 @Injectable()
 export class ExportExcelService {
   public solveExportAndDownloadExcelFileFromDashBoard(data: Array<IDashboardUser>, fileName: string): void {
+    /*const tabla = document.getElementById('miTabla');
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(tabla);*/
     const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(data);
     // Crea un libro de trabajo (workbook)
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
