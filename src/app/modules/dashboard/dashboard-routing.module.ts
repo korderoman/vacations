@@ -13,6 +13,10 @@ const routes: Routes = [
         pathMatch: 'full',
       },
       {
+        path: 'admin',
+        loadChildren: () => import('./common/components/admin/admin.module').then((m) => m.AdminModule),
+      },
+      {
         path: 'dias_no_laborados',
         loadChildren: () => import('./common/components/no-laboral-days/no-laboral-days.module').then((m) => m.NoLaboralDaysModule),
       },

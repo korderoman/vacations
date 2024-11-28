@@ -12,6 +12,7 @@ export class DashboardAdapter {
 
   private solveMenus(): Array<IMenusDashboard> {
     return [
+      { path: 'ADMIN', pathLabel: EMenus.ADMIN },
       { path: 'DIAS_NO_LABORADOS', pathLabel: EMenus.DIAS_NO_LABORADOS },
       { path: 'DIAS_DISPONIBLES', pathLabel: EMenus.DIAS_DISPONIBLES },
     ];

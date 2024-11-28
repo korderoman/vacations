@@ -25,6 +25,11 @@ const routes: Routes = [
     loadChildren: () => import('./modules/employee/employee.module').then((m) => m.EmployeeModule),
     canActivate: [LOAD_PARAMETER_GUARD],
   },
+  {
+    path: '**',
+    redirectTo: '',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
